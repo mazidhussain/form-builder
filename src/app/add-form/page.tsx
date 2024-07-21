@@ -1,6 +1,6 @@
 "use client"
-import React, { useState } from "react";
-import { FormBuilder as FormBuilderIo, Formio } from "react-formio";
+import React, { useEffect, useState } from "react";
+import { FormBuilder, Formio } from "react-formio";
 import { formIoData } from "@/utils/const";
 import "react-form-builder2/dist/app.css";
 import "formiojs/dist/formio.full.css";
@@ -12,7 +12,7 @@ type FormData = {
 };
 
 export default function Page(): JSX.Element {
-    const [formData, setFormData] = useState<FormData>({});
+    const [formData, setFormData] = useState<FormData>(formIoData);
 
     const printResult = () => {
         Formio.createForm(document.getElementById("formio-result"), {
@@ -22,6 +22,11 @@ export default function Page(): JSX.Element {
             form.on("submit", (data: any) => console.log("submit", data));
         });
     };
+
+    useEffect(() => {
+        console.log("data", formData);
+
+    }, [formData])
 
     return (
         <div className="p-4">
@@ -33,20 +38,15 @@ export default function Page(): JSX.Element {
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-md">
-                <FormBuilderIo
+                <FormBuilder
                     form={formData}
                     onSubmit={(data: any) => {
                         console.log(data);
                     }}
                     saveForm={(data: any) => setFormData(data)}
                     saveText="Save Form"
-                    submitText="asdsa"
                     onSubmitDone={(data: any) => console.log(data)}
                 />
-            </div>
-
-            <div className="mt-6" style={{ display: "none" }}>
-                <div id="formio-result" />
             </div>
         </div>
     );
