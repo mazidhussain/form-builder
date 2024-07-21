@@ -1,0 +1,17 @@
+.formcomponents {
+    width: max-content !important;
+    border-right: 1px solid grey;
+    padding-right: 20px;
+}
+
+.formarea {
+    width: 100%;
+    height: 100%;
+}
+
+.drag-and-drop-alert {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
