@@ -43,6 +43,7 @@ export default function Page(): JSX.Element {
                     onSubmit={(data: any) => {
                         console.log(data);
                     }}
+                    onChange={(schema: any) => console.log(schema)}
                     saveForm={(data: any) => setFormData(data)}
                     saveText="Save Form"
                     onSubmitDone={(data: any) => console.log(data)}
